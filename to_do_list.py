@@ -31,6 +31,7 @@ def atualizar_id(tarefas):
 # MAIN FUNÇÕES -----------------------------------------------------------------------
 
 def ver_tarefas():
+    limpar_terminal()
     dados = carregar_tarefas()
     for tarefa in dados:
         if tarefa['concluida'] == False:
@@ -39,6 +40,7 @@ def ver_tarefas():
             print(f"{tarefa['tarefa']} - [X]")
 
 def adicionar_tarefa():
+    limpar_terminal()
     tarefa_pra_adicionar = input("Digite a tarefa que você deseja adicionar: ")
     dados_tarefas = carregar_tarefas()
     nova_tarefa ={"id": len(dados_tarefas) + 1, "tarefa": tarefa_pra_adicionar, "concluida": False}
@@ -51,6 +53,7 @@ def salvar_tarefas(tarefa):
 
 
 def remover_tarefa():
+    limpar_terminal()
     ver_tarefas()
     escolha_remover = input("\nEscolha a tarefa para ser retirada.\n\n")
     escolha_remover_upper = escolha_remover.upper()
@@ -62,12 +65,14 @@ def remover_tarefa():
             dados.remove(tarefas)
             atualizar_id(dados)
             salvar_tarefas(dados)
+            limpar_terminal()
             print("\nTarefa removida!")
             return
     print("\nTarefa não encontrada")
 
     
 def marcar_tarefas():
+    limpar_terminal()
     ver_tarefas()
     escolha_marcar = input("\nEscolha a tarefa para ser marcada.\n\n")
     escolha_marcar_upper = escolha_marcar.upper()
@@ -94,28 +99,28 @@ while saiu == False:
     limpar_terminal()
 
     print("Bem vindo ao banco pessoal, o que deseja fazer?\n")
-    escolha = input("Verificar tarefas\n"
-    "Adicionar tarefas\n"
-    "Remover Tarefas\n"
-    "Marcar Tarefas\n" \
-    "Sair\n")
+    escolha = input("1 - Verificar tarefas\n"
+    "2 - Adicionar tarefas\n"
+    "3 - Remover Tarefas\n"
+    "4 - Marcar Tarefas\n" \
+    "5 - Sair\n\nEscolha: ")
 
     print("\n")
     escolhaUpper = escolha.upper()
     match escolhaUpper:
-        case"VERIFICAR":
+        case"VERIFICAR" | "1":
             ver_tarefas()
-        case"ADICIONAR":
+        case"ADICIONAR" | "2":
             adicionar_tarefa()
-        case"REMOVER":
+        case"REMOVER" | "3":
             remover_tarefa()
-        case"MARCAR":
+        case"MARCAR" | "4":
             marcar_tarefas()
-        case"SAIR":
+        case"SAIR" | "5":
             saiu = True
-        case"":
+        case _:
             print("Escolha uma das opções")
             break
 
-    if(escolhaUpper != "SAIR"):
-        enter = input("\nVoltar - pressione ENTER\n\n")
+    if(escolhaUpper != "SAIR" and escolhaUpper != "5"):
+        input("\nVoltar - pressione ENTER\n\n")
