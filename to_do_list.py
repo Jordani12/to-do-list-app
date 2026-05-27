@@ -1,7 +1,13 @@
 import json
 import os
+import sys
 
-PASTA = os.path.dirname(os.path.abspath(__file__))
+# Detecta se está rodando como .exe (PyInstaller) ou como script normal
+if getattr(sys, 'frozen', False):
+    PASTA = os.path.dirname(sys.executable)  # pasta do .exe
+else:
+    PASTA = os.path.dirname(os.path.abspath(__file__))  # pasta do .py
+
 ARQUIVO = os.path.join(PASTA, "tarefas.json")
 
 # FUNÇÕES AUXILIARES -----------------------------------------------------------------------
