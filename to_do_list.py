@@ -30,14 +30,10 @@ def atualizar_id(tarefas):
 
 # MAIN FUNÇÕES -----------------------------------------------------------------------
 
-def ver_tarefas():
-    limpar_terminal()
-    dados = carregar_tarefas()
+def ver_tarefas(dados):
     for tarefa in dados:
-        if tarefa['concluida'] == False:
-            print(f"{tarefa['tarefa']} - [ ]")
-        else:
-            print(f"{tarefa['tarefa']} - [X]")
+        status = "[X]" if tarefa['concluida'] else "[ ]"
+        print(f"{tarefa['id']} - {tarefa['tarefa']} - {status}")
 
 def adicionar_tarefa():
     limpar_terminal()
@@ -54,48 +50,47 @@ def salvar_tarefas(tarefa):
 
 def remover_tarefa():
     limpar_terminal()
-    ver_tarefas()
-    escolha_remover = input("\nEscolha a tarefa para ser retirada.\n\n")
-    escolha_remover_upper = escolha_remover.upper()
-    
     dados = carregar_tarefas()
-    for tarefas in dados:
-        tarefa_upper = str(tarefas['tarefa']).upper()
-        if tarefa_upper == escolha_remover_upper:
-            dados.remove(tarefas)
+    ver_tarefas(dados)
+
+    escolha_remover = input("\nEscolha a tarefa para ser retirada.\n\n").upper
+    
+    for tarefa in dados:
+        tarefa_upper = str(tarefa['tarefa']).upper()
+
+        if tarefa_upper == escolha_remover:
+            dados.remove(tarefa)
             atualizar_id(dados)
             salvar_tarefas(dados)
             limpar_terminal()
             print("\nTarefa removida!")
             return
+        
     print("\nTarefa não encontrada")
 
     
 def marcar_tarefas():
     limpar_terminal()
-    ver_tarefas()
-    escolha_marcar = input("\nEscolha a tarefa para ser marcada.\n\n")
-    escolha_marcar_upper = escolha_marcar.upper()
-    
     dados = carregar_tarefas()
-    for tarefas in dados:
-        tarefa_upper = str(tarefas['tarefa']).upper()
-        if tarefa_upper == escolha_marcar_upper:
-            if tarefas['concluida'] == True:
-                tarefas['concluida'] = False
-            else:
-                tarefas['concluida'] = True         
+    ver_tarefas(dados)
+
+    escolha_marcar = input("\nEscolha a tarefa para ser marcada.\n\n").upper
+    
+    for tarefa in dados:
+        tarefa_upper = str(tarefa['tarefa']).upper()
+
+        if tarefa_upper == escolha_marcar:
+            tarefa['concluida'] = not tarefa['concluida']
             salvar_tarefas(dados)
             print("\nTarefa alterada!")
             return
+        
     print("\nTarefa não encontrada")
 
 
 # LOOP DE ESCOLHAS -----------------------------------------------------------------------
 
-saiu = False
-
-while saiu == False: 
+while True: 
     limpar_terminal()
 
     print("Bem vindo ao banco pessoal, o que deseja fazer?\n")
@@ -104,12 +99,12 @@ while saiu == False:
     "3 - Remover Tarefas\n"
     "4 - Marcar Tarefas\n" \
     "5 - Sair\n\nEscolha: ")
+    print("\n").upper
 
-    print("\n")
-    escolhaUpper = escolha.upper()
-    match escolhaUpper:
+    match escolha:
         case"VERIFICAR" | "1":
-            ver_tarefas()
+            dados = carregar_tarefas()
+            ver_tarefas(dados)
         case"ADICIONAR" | "2":
             adicionar_tarefa()
         case"REMOVER" | "3":
@@ -117,10 +112,9 @@ while saiu == False:
         case"MARCAR" | "4":
             marcar_tarefas()
         case"SAIR" | "5":
-            saiu = True
+            break
         case _:
             print("Escolha uma das opções")
-            break
 
-    if(escolhaUpper != "SAIR" and escolhaUpper != "5"):
+    if escolha != "SAIR" and escolha != "5":
         input("\nVoltar - pressione ENTER\n\n")
