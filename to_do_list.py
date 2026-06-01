@@ -105,7 +105,7 @@ while True:
     "3 - Remover Tarefas\n"
     "4 - Marcar Tarefas\n" \
     "5 - Sair\n\nEscolha: ")
-    print("\n").upper
+    print("\n").upper()
 
     match escolha:
         case"VERIFICAR" | "1":
