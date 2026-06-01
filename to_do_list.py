@@ -57,7 +57,7 @@ def remover_tarefa():
     dados = carregar_tarefas()
     ver_tarefas(dados)
 
-    escolha_remover = input("\nEscolha a tarefa para ser retirada.\n\n").upper
+    escolha_remover = input("\nEscolha a tarefa para ser retirada.\n\n").upper()
     
     for tarefa in dados:
         tarefa_upper = str(tarefa['tarefa']).upper()
