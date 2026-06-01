@@ -1,12 +1,22 @@
 [
     {
         "id": 1,
-        "tarefa": "Trabalhar",
-        "concluida": true
+        "tarefa": "Projeto personagem",
+        "concluida": false
     },
     {
         "id": 2,
-        "tarefa": "Projeto de extensão",
+        "tarefa": "Estudar português",
+        "concluida": false
+    },
+    {
+        "id": 3,
+        "tarefa": "Mandar PE no teams",
+        "concluida": false
+    },
+    {
+        "id": 4,
+        "tarefa": "Estudar programação",
         "concluida": false
     }
 ]
