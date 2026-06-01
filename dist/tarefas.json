@@ -2,7 +2,7 @@
     {
         "id": 1,
         "tarefa": "Projeto personagem",
-        "concluida": false
+        "concluida": true
     },
     {
         "id": 2,
@@ -12,11 +12,11 @@
     {
         "id": 3,
         "tarefa": "Mandar PE no teams",
-        "concluida": false
+        "concluida": true
     },
     {
         "id": 4,
         "tarefa": "Estudar programação",
-        "concluida": false
+        "concluida": true
     }
 ]
