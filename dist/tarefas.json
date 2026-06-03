@@ -11,12 +11,17 @@
     },
     {
         "id": 3,
-        "tarefa": "Mandar PE no teams",
-        "concluida": true
+        "tarefa": "Estudar programação",
+        "concluida": false
     },
     {
         "id": 4,
-        "tarefa": "Estudar programação",
-        "concluida": true
+        "tarefa": "Projeto jogo indie",
+        "concluida": false
+    },
+    {
+        "id": 5,
+        "tarefa": "Estudar CNH",
+        "concluida": false
     }
 ]
