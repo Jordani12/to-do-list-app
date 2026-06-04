@@ -12,12 +12,12 @@
     {
         "id": 3,
         "tarefa": "Estudar programação",
-        "concluida": false
+        "concluida": true
     },
     {
         "id": 4,
         "tarefa": "Projeto jogo indie",
-        "concluida": false
+        "concluida": true
     },
     {
         "id": 5,
