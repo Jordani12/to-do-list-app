@@ -2,7 +2,7 @@
     {
         "id": 1,
         "tarefa": "Projeto personagem",
-        "concluida": true
+        "concluida": false
     },
     {
         "id": 2,
@@ -12,7 +12,7 @@
     {
         "id": 3,
         "tarefa": "Estudar programação",
-        "concluida": true
+        "concluida": false
     },
     {
         "id": 4,
@@ -22,6 +22,11 @@
     {
         "id": 5,
         "tarefa": "Estudar CNH",
+        "concluida": true
+    },
+    {
+        "id": 6,
+        "tarefa": "Botar os robos pra rodar",
         "concluida": false
     }
 ]
