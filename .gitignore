@@ -1,0 +1,2 @@
+# Ignorar o arquivo de tarefas dentro da pasta dist
+dist/tarefas.json
