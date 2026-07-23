@@ -35,6 +35,7 @@ def atualizar_id(tarefas):
 # -----------------------------------------------------------------------
 
 def ver_tarefas(dados):
+    limpar_terminal()
     for tarefa in dados:
         status = "[X]" if tarefa['concluida'] else "[ ]"
         print(f"{tarefa['id']} - {tarefa['tarefa']} - {status}")
@@ -57,12 +58,18 @@ def remover_tarefa():
     dados = carregar_tarefas()
     ver_tarefas(dados)
 
-    escolha_remover = input("\nEscolha a tarefa para ser retirada.\n\n").upper()
+    escolha = input("\nEscolha o ID da tarefa para marcar.\n\n")
+    
+    try:
+        escolha = int(escolha)
+    except ValueError:
+        print("ID inválido.")
+        return
     
     for tarefa in dados:
-        tarefa_upper = str(tarefa['tarefa']).upper()
+        tarefa_id = int(tarefa['id'])
 
-        if tarefa_upper == escolha_remover:
+        if tarefa_id == escolha:
             dados.remove(tarefa)
             atualizar_id(dados)
             salvar_tarefas(dados)
@@ -78,12 +85,18 @@ def marcar_tarefas():
     dados = carregar_tarefas()
     ver_tarefas(dados)
 
-    escolha_marcar = input("\nEscolha a tarefa para ser marcada.\n\n").upper
+    escolha = input("\nEscolha o ID da tarefa para marcar.\n\n")
+
+    try:
+        escolha = int(escolha)
+    except ValueError:
+        print("ID inválido.")
+        return
+        
     
     for tarefa in dados:
-        tarefa_upper = str(tarefa['tarefa']).upper()
-
-        if tarefa_upper == escolha_marcar:
+        tarefa_id = int(tarefa['id'])
+        if tarefa_id == escolha:
             tarefa['concluida'] = not tarefa['concluida']
             salvar_tarefas(dados)
             print("\nTarefa alterada!")
@@ -104,8 +117,8 @@ while True:
     "2 - Adicionar tarefas\n"
     "3 - Remover Tarefas\n"
     "4 - Marcar Tarefas\n" \
-    "5 - Sair\n\nEscolha: ")
-    print("\n").upper()
+    "5 - Sair\n\nEscolha: ").upper()
+    print("\n")
 
     match escolha:
         case"VERIFICAR" | "1":
